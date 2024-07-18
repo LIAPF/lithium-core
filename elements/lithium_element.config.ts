@@ -10,6 +10,7 @@ export const LithiumElement = (globalStyle?: string, style?: string) => {
 
     updated() {
         htmx.process(this.shadowRoot);
+        htmx.config.selfRequestsOnly = false;
     }
 
     public listen = (eventName: string, action: (e: CustomEvent) => void) => {
