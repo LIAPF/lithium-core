@@ -13,6 +13,15 @@ export const LithiumElement = (globalStyle?: string, style?: string) => {
         htmx.config.selfRequestsOnly = false;
     }
 
+    public listenHx(config: { event: string, target?: string[] }, action: (c: CustomEvent) => void) {
+      const { event, target } = config;
+      this.addEventListener(`htmx:${event}`, (e: CustomEvent) => {
+        if (!target || (target && target.includes(e.detail.target.getAttribute('id')))) {
+          action(e);
+        }
+      });
+    }
+
     public listen = (eventName: string, action: (e: CustomEvent) => void) => {
       this.addEventListener(eventName, (e: CustomEvent) => {
         action(e);
