@@ -26,7 +26,7 @@ export const LithiumElement = (globalStyle?: string, style?: string) => {
       this.addEventListener(eventName, (e: CustomEvent) => {
         action(e);
       });
-    };
+    }
 
     public output(
       name: string,
